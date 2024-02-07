@@ -4,7 +4,7 @@ services:
     image: jc21/nginx-proxy-manager:${TAG}
     container_name: nginx-proxy-manager
     labels:
-      - com.centurylinklabs.watchtower.enable=true
+      - com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}
     volumes:
       - ${DATA_PATH}:/data
       - ${LETSENCRYPT_PATH}:/etc/letsencrypt

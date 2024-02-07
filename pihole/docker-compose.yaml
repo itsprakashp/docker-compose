@@ -4,7 +4,7 @@ services:
     container_name: pihole
     image: pihole/pihole:${TAG}
     labels:
-      - com.centurylinklabs.watchtower.enable=true
+      - com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}
     environment:
       TZ: ${TZ}
       WEBPASSWORD: '${WEBPASSWORD}'

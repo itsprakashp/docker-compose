@@ -4,7 +4,7 @@ services:
     image: portainer/portainer-ce:${TAG}
     container_name: portainer
     labels:
-      - com.centurylinklabs.watchtower.enable=true
+      - com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}
     volumes:
       - ./data:/data
       - /etc/localtime:/etc/localtime:ro
