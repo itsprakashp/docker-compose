@@ -20,8 +20,8 @@ services:
     restart: "unless-stopped"
     
   playwright-chrome:
-    hostname: "playwright-chrome"
     image: "browserless/chrome:${CHROME_TAG}"
+    container_name: "playwright-chrome"
     labels:
       - "com.centurylinklabs.watchtower.enable=${CHROME_AUTO_UPDATE}"
     ports:
