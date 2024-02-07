@@ -5,12 +5,25 @@ services:
     container_name: "changedetection"
     labels:
       - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+      - "com.centurylinklabs.watchtower.depends-on=playwright-chrome"
+    depends_on:
+      - playwright-chrome
     environment:
       - "PUID=${PUID}"
       - "PGID=${PGID}"
       - "TZ=${TZ}"
+      - "PLAYWRIGHT_DRIVER_URL=ws://127.0.0.1:${CHROME_PORT}/?stealth=1&--disable-web-security=true"
     volumes:
       - "${CONFIG_PATH}:/config"
     ports:
       - "${PORT}:5000"
+    restart: "unless-stopped"
+    
+  playwright-chrome:
+    hostname: "playwright-chrome"
+    image: "browserless/chrome${CHROME_TAG}"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${CHROME_AUTO_UPDATE}"
+    ports:
+      - "${CHROME_PORT}:3000"
     restart: "unless-stopped"
