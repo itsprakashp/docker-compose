@@ -6,8 +6,8 @@ services:
     labels:
       - com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}
     environment:
-      TZ: ${TZ}
-      WEBPASSWORD: '${WEBPASSWORD}'
+      - TZ=${TZ}
+      - WEBPASSWORD='${WEBPASSWORD}'
     volumes:
       - '${ETC_PIHOLE_PATH}:/etc/pihole'
       - '${ETC_DNSMASQ_PATH}:/etc/dnsmasq.d'
