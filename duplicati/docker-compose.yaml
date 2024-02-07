@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  duplicati:
+    image: "linuxserver/duplicati:${TAG}"
+    container_name: "duplicati"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+    environment:
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
+      - "TZ=${TZ}"
+    volumes:
+      - "${CONFIG_PATH}:/config"
+      - "${BACKUP_PATH}:/backups"
+      - "${SOURCE_PATH}:/source"
+      - "${SCRIPTS_PATH}:/scripts"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/usr/bin/docker:/usr/bin/docker"
+    ports:
+      - "${PORT}:8200"
+    restart: "unless-stopped"
