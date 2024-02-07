@@ -1,14 +1,14 @@
 version: "3.8"  
 services:
   authelia:
-    image: authelia/authelia:${TAG}
-    container_name: authelia
+    image: "authelia/authelia:${TAG}"
+    container_name: "authelia"
     labels:
-      - com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
-      - TZ=${TZ}
+      - "TZ=${TZ}"
     volumes:
-      - ${CONFIG_PATH}:/config
+      - "${CONFIG_PATH}:/config"
     ports:
       - "${PORT}:9091"
-    restart: unless-stopped
+    restart: "unless-stopped"
