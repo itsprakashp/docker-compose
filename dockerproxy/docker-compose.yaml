@@ -1,15 +1,15 @@
 version: "3.3"
 services:
   dockerproxy:
-    image: ghcr.io/tecnativa/docker-socket-proxy:${TAG}
-    container_name: dockerproxy
+    image: "ghcr.io/tecnativa/docker-socket-proxy:${TAG}"
+    container_name: "dockerproxy"
     labels:
-      - com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
-      - CONTAINERS=${CONTAINERS}
-      - POST=${POST}
+      - "CONTAINERS=${CONTAINERS}"
+      - "POST=${POST}"
     ports:
-      - ${PORT}:2375
+      - "${PORT}:2375"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    restart: unless-stopped
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    restart: "unless-stopped"
