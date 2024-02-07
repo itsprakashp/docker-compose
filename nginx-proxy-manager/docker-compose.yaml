@@ -6,8 +6,8 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     volumes:
-      - "${DATA_PATH}=/data"
-      - "${LETSENCRYPT_PATH}=/etc/letsencrypt"
+      - "${DATA_PATH}:/data"
+      - "${LETSENCRYPT_PATH}:/etc/letsencrypt"
     ports:
       - "${PORT1}:80"
       - "${PORT2}:81"
