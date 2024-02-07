@@ -21,7 +21,7 @@ services:
     
   playwright-chrome:
     hostname: "playwright-chrome"
-    image: "browserless/chrome${CHROME_TAG}"
+    image: "browserless/chrome:${CHROME_TAG}"
     labels:
       - "com.centurylinklabs.watchtower.enable=${CHROME_AUTO_UPDATE}"
     ports:
