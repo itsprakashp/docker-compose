@@ -12,7 +12,7 @@ services:
       - "PUID=${PUID}"
       - "PGID=${PGID}"
       - "TZ=${TZ}"
-      - "PLAYWRIGHT_DRIVER_URL=ws://127.0.0.1:${CHROME_PORT}/?stealth=1&--disable-web-security=true"
+      - "PLAYWRIGHT_DRIVER_URL=ws://playwright-chrome:3000/"
     volumes:
       - "${CONFIG_PATH}:/config"
     ports:
