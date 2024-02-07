@@ -1,15 +1,15 @@
-version: "3.8"
+version: "2.4"
 services:
   portainer:
-    image: portainer/portainer-ce:${TAG}
-    container_name: portainer
+    image: "portainer/portainer-ce:${TAG}"
+    container_name: "portainer"
     labels:
-      - com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     volumes:
-      - ./data:/data
-      - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock
+      - "./data:/data"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
     ports:
       - "8000:8000"
       - "9443:9443"
-    restart: unless-stopped
+    restart: "unless-stopped"
