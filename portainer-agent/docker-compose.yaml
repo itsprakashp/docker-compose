@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   portainer-agent:
-    image: portainer/agent:latest
+    image: portainer/agent:${TAG}
     container_name: portainer-agent
     labels:
       - com.centurylinklabs.watchtower.enable=true
