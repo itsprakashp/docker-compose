@@ -25,5 +25,5 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=${CHROME_AUTO_UPDATE}"
     ports:
-      - "${CHROME_PORT}:3000"
+      - "3000:3000"
     restart: "unless-stopped"
