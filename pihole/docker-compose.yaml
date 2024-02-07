@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
+    environment:
+      TZ: ${TZ}
+      WEBPASSWORD: '${WEBPASSWORD}'
+    volumes:
+      - '${ETC_PIHOLE_PATH}:/etc/pihole'
+      - '${ETC_DNSMASQ_PATH}:/etc/dnsmasq.d'
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:80/tcp"
+    restart: unless-stopped
