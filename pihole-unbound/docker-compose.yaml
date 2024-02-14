@@ -8,7 +8,9 @@ services:
     environment:
       - "TZ=${TZ}"
       - "WEBPASSWORD=${WEBPASSWORD}"
-#    volumes:
+    volumes:
+      - "${ETC_PIHOLE_PATH}:/etc/pihole"
+      - "${ETC_DNSMASQ_PATH}:/etc/dnsmasq.d"
 #      - "${UNBOUND_PATH}:/opt/unbound/etc/unbound"
     ports:
       - "53:53/tcp"
