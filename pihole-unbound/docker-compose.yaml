@@ -8,8 +8,8 @@ services:
     environment:
       - "TZ=${TZ}"
       - "WEBPASSWORD=${WEBPASSWORD}"
-    volumes:
-      - "${UNBOUND_PATH}:/opt/unbound/etc/unbound"
+#    volumes:
+#      - "${UNBOUND_PATH}:/opt/unbound/etc/unbound"
     ports:
       - "53:53/tcp"
       - "53:53/udp"
