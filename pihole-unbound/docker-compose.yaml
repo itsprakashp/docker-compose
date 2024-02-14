@@ -11,9 +11,9 @@ services:
     volumes:
       - "${ETC_PIHOLE_PATH}:/etc/pihole"
       - "${ETC_DNSMASQ_PATH}:/etc/dnsmasq.d"
-#      - "${UNBOUND_PATH}:/opt/unbound/etc/unbound"
+#      - "${UNBOUND_PATH}:/opt/unbound/etc/unbound" #For custom Unbound conf 
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-      - "80:80/tcp"
+      - "${PORT}:80/tcp"
     restart: "unless-stopped"
