@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  pihole-unbound:
+    container_name: "pihole-unbound"
+    image: "rlabinc/pihole-unbound:${TAG}"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+    environment:
+      - "TZ=${TZ}"
+      - "WEBPASSWORD=${WEBPASSWORD}"
+    volumes:
+      - "${UNBOUND_PATH}:/opt/unbound/etc/unbound"
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:80/tcp"
+    restart: "unless-stopped"
