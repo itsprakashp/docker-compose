@@ -1,0 +1,25 @@
+version: "3"
+services:
+  cloudflare-ddns:
+    image: "favonia/cloudflare-ddns:${TAG}"
+    container_name: cloudflare-ddns
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+    cap_add:
+      - SETUID
+      - SETGID
+    cap_drop:
+      - all
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - CF_API_TOKEN=${CF_API_TOKEN}
+      - DOMAINS=${DOMAINS}
+      - PROXIED=${PROXIED}
+      - IP6_PROVIDER=${IP6_PROVIDER}
+      - UPDATE_CRON=${UPDATE_CRON}
+      - HEALTHCHECKS=${HEALTHCHECKS}
+    restart: unless-stopped
