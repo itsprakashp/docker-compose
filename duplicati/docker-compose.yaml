@@ -11,8 +11,8 @@ services:
       - "TZ=${TZ}"
     volumes:
       - "${CONFIG_PATH}:/config"
-      - "${BACKUP_PATH}:/backups"
       - "${SOURCE_PATH}:/source"
+      - "${BACKUP_PATH}:/backups"
       - "${SCRIPTS_PATH}:/scripts"
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/usr/bin/docker:/usr/bin/docker"
