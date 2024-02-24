@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  firefox-syncserver:
+    image: "crazymax/firefox-syncserver:${TAG}"
+    container_name: "firefox-syncserver"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+    environment:
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
+      - "TZ=${TZ}"
+      - "FF_SYNCSERVER_PUBLIC_URL=${FF_SYNCSERVER_PUBLIC_URL}"
+      - "FF_SYNCSERVER_SECRET=${FF_SYNCSERVER_SECRET}"
+      - "FF_SYNCSERVER_ALLOW_NEW_USERS=${FF_SYNCSERVER_ALLOW_NEW_USERS}"
+      - "FF_SYNCSERVER_FORCE_WSGI_ENVIRON=${FF_SYNCSERVER_FORCE_WSGI_ENVIRON}"
+      - "FF_SYNCSERVER_ACCESSLOG=${FF_SYNCSERVER_ACCESSLOG}"
+      - "FF_SYNCSERVER_LOGLEVEL=${FF_SYNCSERVER_LOGLEVEL}"
+    volumes:
+      - "${DATA_PATH}:/data"
+      - "/etc/localtime:/etc/localtime:ro"
+    ports:
+      - "${PORT}:5000"
+    restart: "unless-stopped"
