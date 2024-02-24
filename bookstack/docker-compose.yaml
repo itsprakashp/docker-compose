@@ -14,9 +14,9 @@ services:
       - TZ=${TZ}
       - APP_URL=${APP_URL}
       - DB_HOST=bookstack_db
+      - DB_DATABASE=${DB_DATABASE}
       - DB_USER=${DB_USER}
       - DB_PASS=${DB_PASS}
-      - DB_DATABASE=${DB_DATABASE}
     volumes:
       - ${BOOKSTACK_CONFIG_PATH}:/config
     ports:
@@ -32,8 +32,8 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASS}
       - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASS}
       - MYSQL_USER=${DB_USER}
       - MYSQL_PASSWORD=${DB_PASS}
     volumes:
