@@ -3,6 +3,7 @@ services:
   glances:
     image: "nicolargo/glances:${TAG}"
     container_name: "glances"
+    hostname: "Cosmoem"
     pid: "host"
     labels:
       - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
@@ -11,9 +12,6 @@ services:
     ports:
       - "${PORT}:61208"
     volumes:
-      - "${CONFIG}:/glances/conf"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "/:/mnt/root"
-      - "${DISK1}:/mnt/disk1"
-      - "${DISK2}:/mnt/disk2"
     restart: "unless-stopped"
