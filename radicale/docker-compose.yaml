@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  radicale:
+    image: "tomsquest/docker-radicale:${TAG}"
+    container_name: "radicale"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+    init: "true"
+    read_only: "true"
+    security_opt:
+      - "no-new-privileges:true"
+    cap_drop:
+      - "ALL"
+    cap_add:
+      - "SETUID"
+      - "SETGID"
+      - "CHOWN"
+      - "KILL"
+    volumes:
+      - "${CONFIG_PATH}:/config"
+      - "${DATA_PATH}:/data"
+      - "${USERS_PATH}:/users:ro"
+    ports:
+      - "${PORT}:5232"
+    restart: "nless-stopped"
+    healthcheck:
+      test: curl -f http://127.0.0.1:5232 || exit 1
+      interval: 30s
+      retries: 3
