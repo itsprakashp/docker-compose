@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+   vaultwarden:
+    image: "vaultwarden/server:${TAG}"
+    container_name: "vaultwarden"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+    environment:
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
+      - "TZ=${TZ}"
+      - "WEBSOCKET_ENABLED=${WEBSOCKET_ENABLED}"
+#      - "SIGNUPS_ALLOWED=${SIGNUPS_ALLOWED}"
+#      - "ADMIN_TOKEN=${ADMIN_TOKEN}"
+#      - "SMTP_HOST=${SMTP_HOST}"
+#      - "SMTP_FROM=${SMTP_FROM}"
+#      - "SMTP_PORT=${SMTP_PORT}"
+#      - "SMTP_SECURITY=starttls"
+#      - "SMTP_USERNAME=${SMTP_USERNAME}"
+#      - "SMTP_PASSWORD=${SMTP_PASSWORD}"
+      - "LOG_FILE=/data/vaultwarden.log"
+    volumes:
+      - "${DATA_PATH}:/data/"
+    ports:
+      - "${PORT1}:80"
+      - "${PORT2}:3012"
+    restart: "unless-stopped"
