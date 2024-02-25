@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  homeassistant:
+    image: "linuxserver/homeassistant:${TAG}"
+    container_name: "homeassistant"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+    environment:
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
+      - "TZ=${TZ}"
+    network_mode: "host"
+    volumes:
+      - "${CONFIG_PATH}:/config"
+    restart: "unless-stopped"
