@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  joplin-server:
+    image: "joplin/server:${SERVER_TAG}"
+    container_name: "joplin-server"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+      - "com.centurylinklabs.watchtower.depends-on=joplin-db"
+    depends_on:
+      - "joplin-db"
+    environment:
+      - "APP_PORT=${APP_PORT}"
+      - "APP_BASE_URL=${APP_BASE_URL}"
+      - "DB_CLIENT=pg"
+      - "POSTGRES_DATABASE=${POSTGRES_DATABASE}"
+      - "POSTGRES_USER=${POSTGRES_USER}"
+      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
+      - "POSTGRES_HOST=joplin-db"
+      - "POSTGRES_PORT=5432"
+    ports:
+      - "${APP_PORT}:22300"
+    restart: "unless-stopped"
+
+  joplin-db:
+    image: "postgres:${DB_TAG}"
+    container_name: "joplin-db"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+    environment:
+      - "POSTGRES_DB=${POSTGRES_DATABASE}"
+      - "POSTGRES_USER=${POSTGRES_USER}"
+      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
+    volumes:
+      - "${DB_PATH}:/var/lib/postgresql/data"
+    ports:
+      - "${DB_PORT}:5432"
+    restart: "unless-stopped"
