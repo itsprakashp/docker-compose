@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  minio:
+    image: "minio/minio:${TAG}"
+    container_name: "minio"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+    environment:
+      - "MINIO_ROOT_USER=${MINIO_ROOT_USER}"
+      - "MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}"
+    command: server --console-address ":9001" /data
+    volumes:
+      - "${DATA_PATH}:/data"
+    ports:
+      - "${PORT1}:9000"
+      - "${PORT2}:9001"
+    restart: "unless-stopped"
