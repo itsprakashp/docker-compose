@@ -11,6 +11,7 @@ services:
     ports:
       - "${PORT}:61208"
     volumes:
+      - "${CONFIG}:/glances/conf"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "/:/mnt/root"
       - "${DISK1}:/mnt/disk1"
