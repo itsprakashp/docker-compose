@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  stirling-pdf:
+    image: "frooodle/s-pdf:${TAG}"
+    container_name: "stirling-pdf"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+    environment:
+      - "DOCKER_ENABLE_SECURITY=${DOCKER_ENABLE_SECURITY}"
+    ports:
+      - "${PORT}:8080"
+    volumes:
+#      - "/location/of/trainingData:/usr/share/tesseract-ocr/5/tessdata #Required for extra OCR languages"
+      - "${CONFIG_PATH}:/configs"
+#      - "/location/of/customFiles:/customFiles/"
+#      - "/location/of/logs:/logs/"
+    restart: "unless-stopped"
