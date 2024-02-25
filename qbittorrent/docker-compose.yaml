@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  qbittorrent:
+    image: "linuxserver/qbittorrent:${TAG}"
+    container_name: "qbittorrent"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+    environment:
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
+      - "TZ=${TZ}"
+      - "WEBUI_PORT=${PORT}"
+    volumes:
+      - "${CONFIG_PATH}:/config"
+      - "${DOWNLOADS}:/downloads"
+    ports:
+      - "${PORT}:${PORT}"
+      - "6881:6881"
+      - "6881:6881/udp"
+    restart: "unless-stopped"
