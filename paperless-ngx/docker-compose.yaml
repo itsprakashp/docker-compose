@@ -9,14 +9,14 @@ services:
     depends_on:
       - "paperless-ngx-redis"
     environment:
-      USERMAP_UID: ${PUID}
-      USERMAP_GID: ${PGID}
-      PAPERLESS_TIME_ZONE: ${TZ}
-      PAPERLESS_SECRET_KEY: ${PAPERLESS_SECRET_KEY}
-      PAPERLESS_URL: ${URL}
-      PAPERLESS_REDIS: redis://paperless-ngx-redis:6379
-      PAPERLESS_FILENAME_FORMAT: "{correspondent}/{created_year}/{title}"
-      PAPERLESS_OCR_DESKEW: false
+      "USERMAP_UID: ${PUID}"
+      "USERMAP_GID: ${PGID}"
+      "PAPERLESS_TIME_ZONE: ${TZ}"
+      "PAPERLESS_SECRET_KEY: ${PAPERLESS_SECRET_KEY}"
+      "PAPERLESS_URL: ${URL}"
+      "PAPERLESS_REDIS: redis://paperless-ngx-redis:6379"
+      "PAPERLESS_FILENAME_FORMAT: "{correspondent}/{created_year}/{title}""
+      "PAPERLESS_OCR_DESKEW: false"
     volumes:
       - "${DATA_PATH}:/usr/src/paperless/data"
       - "${MEDIA_PATH}:/usr/src/paperless/media"
