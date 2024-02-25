@@ -1,0 +1,43 @@
+version: "3.8"
+services:
+  paperless-ngx-server:
+    image: "paperlessngx/paperless-ngx:${SERVER_TAG}"
+    container_name: "paperless-ngx-server"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+      - "com.centurylinklabs.watchtower.depends-on=paperless-ngx-redis"
+    depends_on:
+      - "paperless-ngx-redis"
+    environment:
+      - "USERMAP_UID=${PUID}"
+      - "USERMAP_GID=${PGID}"
+      - "PAPERLESS_TIME_ZONE=${TZ}"
+      - "PAPERLESS_SECRET_KEY=${PAPERLESS_SECRET_KEY}"
+      - "PAPERLESS_URL=${URL}"
+      - "PAPERLESS_REDIS=redis://paperless-ngx-redis:6379"
+      - "PAPERLESS_FILENAME_FORMAT="{correspondent}/{created_year}/{title}""
+      - "PAPERLESS_OCR_DESKEW=false"
+    volumes:
+      - "${DATA_PATH}:/usr/src/paperless/data"
+      - "${MEDIA_PATH}:/usr/src/paperless/media"
+      - "${EXPORT_PATH}:/usr/src/paperless/export"
+      - "${CONSUME_PATH}:/usr/src/paperless/consume"
+    ports:
+      - "${SERVER_PORT}:8000"
+    restart: "unless-stopped"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    
+  paperless-ngx-redis:
+    image: "redis:${REDIS_TAG}"
+    container_name: "paperless-ngx-redis"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+    volumes:
+      - "${REDIS_PATH}:/data"
+    ports:
+      - "${REDIS_PORT}:6379"
+    restart: "unless-stopped"
