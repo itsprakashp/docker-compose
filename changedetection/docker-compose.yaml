@@ -7,7 +7,7 @@ services:
       - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
       - "com.centurylinklabs.watchtower.depends-on=playwright-chrome"
     depends_on:
-      - playwright-chrome
+      - "playwright-chrome"
     environment:
       - "PUID=${PUID}"
       - "PGID=${PGID}"
