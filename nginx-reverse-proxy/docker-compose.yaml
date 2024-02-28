@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  nginx-reverse-proxy:
+    image: "nginx:${TAG}"
+    container_name: "nginx-reverse-proxy"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+    volumes:
+      - "${CONF_PATH}:/etc/nginx/nginx.conf"
+      - "${PROXY_PATH}:/etc/nginx/conf.d"
+      - "${LOG_PATH}:/var/log/nginx"
+      - "${LETSENCRYPT_PATH}:/letsencrypt"
+
+    ports:
+      - "${HTTP}:80"
+      - "${HTTPS}:443"
+    restart: "unless-stopped"
