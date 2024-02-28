@@ -1,0 +1,22 @@
+version: "3"
+services:
+  letsencrypt-cloudflare:
+    image: "certbot/dns-cloudflare:${TAG}"
+    container_name: "letsencrypt-cloudflare"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+
+    # Dry Run 
+    command: certonly --non-interactive --dns-cloudflare --dns-cloudflare-credentials /opt/cloudflare/cloudflare.ini --agree-tos --email ${EMAIL} -d ${DOMAIN} -d *.${DOMAIN} --server https://acme-v02.api.letsencrypt.org/directory --dns-cloudflare-propagation-seconds ${PROPAGATION} --dry-run
+
+    # Issue certificate
+    # command: certonly --non-interactive --dns-cloudflare --dns-cloudflare-credentials /opt/cloudflare/cloudflare.ini --agree-tos --email ${EMAIL} -d ${DOMAIN} -d *.${DOMAIN} --server https://acme-v02.api.letsencrypt.org/directory --dns-cloudflare-propagation-seconds ${PROPAGATION}
+
+    # Renew certificate
+    # command: renew --non-interactive --dns-cloudflare --dns-cloudflare-credentials /opt/cloudflare/cloudflare.ini --agree-tos --server https://acme-v02.api.letsencrypt.org/directory --dns-cloudflare-propagation-seconds ${PROPAGATION}
+
+    volumes:
+      - "${CLOUDFLARE_PATH}:/opt/cloudflare"
+      - "${LETSENCRYPT_PATH}:/etc/letsencrypt"
+      - "${LETSENCRYPT_LOG_PATH}:/var/log/letsencrypt"
+      - "${LETSENCRYPT_VAR_PATH}:/var/lib/letsencrypt"
