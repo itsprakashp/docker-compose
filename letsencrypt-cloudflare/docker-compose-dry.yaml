@@ -19,4 +19,4 @@ services:
       - "${CLOUDFLARE_PATH}:/opt/cloudflare"
       - "${LETSENCRYPT_PATH}:/etc/letsencrypt"
       - "${LETSENCRYPT_LOG_PATH}:/var/log/letsencrypt"
-      - "${LETSENCRYPT_VAR_PATH}:/var/lib/letsencrypt"
+      - "${LETSENCRYPT_LIB_PATH}:/var/lib/letsencrypt"
