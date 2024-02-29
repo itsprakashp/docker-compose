@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  caddy-reverse-proxy:
+    image: "caddy:${TAG}"
+    container_name: "caddy-reverse-proxy"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - "${CADDYFILE_PATH}:/etc/caddy/Caddyfile"
+      - "${CONF_PATH}:/config"
+      - "${DATA_PATH}:/data"
+      - "${LOG_PATH}:/var/log/caddy"
+      - "${SITE_PATH}:/srv"
+    ports:
+      - "${HTTP}:80"
+      - "${HTTPS}:443"
+    restart: "unless-stopped"
