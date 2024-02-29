@@ -22,4 +22,5 @@ services:
       - IP6_PROVIDER=${IP6_PROVIDER}
       - UPDATE_CRON=${UPDATE_CRON}
       - HEALTHCHECKS=${HEALTHCHECKS}
+      - TTL=${TTL}
     restart: unless-stopped
