@@ -13,7 +13,7 @@ services:
       - "${CONF_PATH}:/config"
       - "${DATA_PATH}:/data"
       - "${LOG_PATH}:/var/log/caddy"
-      - "${SITE_PATH}:/srv"
+      - "${DEFAULT_SITE_PATH}:/srv"
     ports:
       - "${HTTP}:80"
       - "${HTTPS}:443"
