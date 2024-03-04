@@ -1,11 +1,8 @@
 version: "3.8"
 services:
   paperless-ngx-server:
-    image: "paperlessngx/paperless-ngx:${SERVER_TAG}"
+    image: "paperlessngx/paperless-ngx:2.5.4"
     container_name: "paperless-ngx-server"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
-      - "com.centurylinklabs.watchtower.depends-on=paperless-ngx-redis"
     depends_on:
       - "paperless-ngx-redis"
     environment:
@@ -32,10 +29,8 @@ services:
       retries: 5
     
   paperless-ngx-redis:
-    image: "redis:${REDIS_TAG}"
+    image: "redis:7.2.4"
     container_name: "paperless-ngx-redis"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     volumes:
       - "${REDIS_PATH}:/data"
     ports:
