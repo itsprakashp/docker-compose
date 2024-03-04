@@ -1,11 +1,8 @@
 version: "3.8"
 services:
   joplin-server:
-    image: "joplin/server:${SERVER_TAG}"
+    image: "joplin/server:2.14.2-beta"
     container_name: "joplin-server"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
-      - "com.centurylinklabs.watchtower.depends-on=joplin-db"
     depends_on:
       - "joplin-db"
     environment:
@@ -22,10 +19,8 @@ services:
     restart: "unless-stopped"
 
   joplin-db:
-    image: "postgres:${DB_TAG}"
+    image: "postgres:16.2"
     container_name: "joplin-db"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
       - "POSTGRES_DB=${POSTGRES_DATABASE}"
       - "POSTGRES_USER=${POSTGRES_USER}"
