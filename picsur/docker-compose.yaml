@@ -1,11 +1,8 @@
 version: "3.8"
 services:
   picsur_app:
-    image: "ghcr.io/caramelfur/picsur:${APP_TAG}"
+    image: "ghcr.io/caramelfur/picsur:0.5.3"
     container_name: "picsur_app"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
-      - "com.centurylinklabs.watchtower.depends-on=picsur_db"
     depends_on:
       - "picsur_db"
     environment:
@@ -23,10 +20,8 @@ services:
     restart: "unless-stopped"
 
   picsur_db:
-    image: "postgres:${DB_TAG}"
+    image: "postgres:16.2"
     container_name: "picsur_db"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
