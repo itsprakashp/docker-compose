@@ -1,12 +1,8 @@
 version: "3.8"
 services:
   nextcloud_app:
-    image: "linuxserver/nextcloud:${APP_TAG}"
+    image: "linuxserver/nextcloud:28.0.3"
     container_name: "nextcloud_app"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
-      - "com.centurylinklabs.watchtower.depends-on=nextcloud_db"
-      - "com.centurylinklabs.watchtower.depends-on=nextcloud_redis"
     depends_on:
       - "nextcloud_db"
       - "nextcloud_redis"
@@ -23,10 +19,8 @@ services:
     restart: "unless-stopped"
 
   nextcloud_db:
-    image: "linuxserver/mariadb:${DB_TAG}"
+    image: "linuxserver/mariadb:10.11.6"
     container_name: "nextcloud_db"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
       - "PUID=${PUID}"
       - "PGID=${PGID}"
@@ -42,10 +36,8 @@ services:
     restart: "unless-stopped"
     
   nextcloud_redis:
-    image: "redis:${REDIS_TAG}"
+    image: "redis:7.2.4"
     container_name: "nextcloud_redis"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     command: redis-server --requirepass ${REDIS_PASSWORD}
     volumes:
       - "${REDIS_PATH}:/data"
