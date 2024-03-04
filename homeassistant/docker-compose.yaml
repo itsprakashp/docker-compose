@@ -3,8 +3,6 @@ services:
   homeassistant:
     image: "linuxserver/homeassistant:2024.2.5"
     container_name: "homeassistant"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
       - "PUID=${PUID}"
       - "PGID=${PGID}"
