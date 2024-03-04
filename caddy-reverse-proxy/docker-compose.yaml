@@ -3,8 +3,6 @@ services:
   caddy-reverse-proxy:
     image: "caddy:2.7.5"
     container_name: "caddy-reverse-proxy"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     cap_add:
       - NET_ADMIN
     volumes:
