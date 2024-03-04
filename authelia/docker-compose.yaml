@@ -1,7 +1,7 @@
 version: "3.8"  
 services:
   authelia:
-    image: "authelia/authelia@sha256:cfe90ac4ae5b766b116e85fe98cb0e1e10a3a117898d522901b5d89425b8fac1"
+    image: "authelia/authelia@sha256:82831059ce5c1151d4ccd37f803cdf35fccbd488c80fe7f9f8de6b76adf40447"
     container_name: "authelia"
     environment:
       - "TZ=${TZ}"
