@@ -3,8 +3,6 @@ services:
   authelia:
     image: "authelia/authelia@sha256:cfe90ac4ae5b766b116e85fe98cb0e1e10a3a117898d522901b5d89425b8fac1"
     container_name: "authelia"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
       - "TZ=${TZ}"
     volumes:
