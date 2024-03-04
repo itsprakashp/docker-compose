@@ -3,8 +3,6 @@ services:
   pihole-unbound:
     container_name: "pihole-unbound"
     image: "rlabinc/pihole-unbound:2024.02.2"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
       - "TZ=${TZ}"
       - "WEBPASSWORD=${WEBPASSWORD}"
