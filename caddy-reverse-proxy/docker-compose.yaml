@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   caddy-reverse-proxy:
-    image: "caddy:2.7.5"
+    image: "caddy:2.7.6"
     container_name: "caddy-reverse-proxy"
     cap_add:
       - NET_ADMIN
