@@ -1,10 +1,8 @@
 version: "3.3"
 services:
   dockerproxy:
-    image: "ghcr.io/tecnativa/docker-socket-proxy:${TAG}"
+    image: "ghcr.io/tecnativa/docker-socket-proxy:0.1.1"
     container_name: "dockerproxy"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
       - "CONTAINERS=${CONTAINERS}"
       - "POST=${POST}"
