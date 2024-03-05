@@ -1,10 +1,8 @@
 version: "3.8"
 services:
   qbittorrent:
-    image: "linuxserver/qbittorrent:${TAG}"
+    image: "linuxserver/qbittorrent:4.6.3"
     container_name: "qbittorrent"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
       - "PUID=${PUID}"
       - "PGID=${PGID}"
