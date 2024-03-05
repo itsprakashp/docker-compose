@@ -1,10 +1,8 @@
 version: "3.8"
 services:
   duplicati:
-    image: "linuxserver/duplicati:${TAG}"
+    image: "linuxserver/duplicati:2.0.7"
     container_name: "duplicati"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
       - "PUID=${PUID}"
       - "PGID=${PGID}"
