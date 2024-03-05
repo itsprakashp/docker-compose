@@ -1,10 +1,8 @@
 version: "3.8"
 services:
   firefox-syncserver:
-    image: "crazymax/firefox-syncserver:${TAG}"
+    image: "crazymax/firefox-syncserver:latest"
     container_name: "firefox-syncserver"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
       - "PUID=${PUID}"
       - "PGID=${PGID}"
