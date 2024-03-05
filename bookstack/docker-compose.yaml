@@ -1,11 +1,8 @@
 version: "3.8"
 services: 
   bookstack_app:
-    image: "linuxserver/bookstack:${APP_TAG}"
+    image: "linuxserver/bookstack:24.02.20240304"
     container_name: "bookstack_app"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
-      - "com.centurylinklabs.watchtower.depends-on=bookstack_db"
     depends_on:
       - "bookstack_db"
     environment:
@@ -24,10 +21,8 @@ services:
     restart: "unless-stopped"
 
   bookstack_db:
-    image: "linuxserver/mariadb:${DB_TAG}"
+    image: "linuxserver/mariadb:10.11.6"
     container_name: "bookstack_db"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
       - "PUID=${PUID}"
       - "PGID=${PGID}"
