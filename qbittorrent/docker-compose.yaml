@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   qbittorrent:
-    image: "linuxserver/qbittorrent:20.04.1"
+    image: "linuxserver/qbittorrent:latest"
     container_name: "qbittorrent"
     environment:
       - "PUID=${PUID}"
