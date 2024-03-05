@@ -1,10 +1,8 @@
 version: "3.8"
 services:
   radicale:
-    image: "tomsquest/docker-radicale:${TAG}"
+    image: "tomsquest/docker-radicale:3.1.8.3"
     container_name: "radicale"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     init: "true"
     read_only: "true"
     security_opt:
