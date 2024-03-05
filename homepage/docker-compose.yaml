@@ -1,10 +1,8 @@
 version: "3.3"
 services:
   dockerproxy:
-    image: "ghcr.io/tecnativa/docker-socket-proxy:${PROXY_TAG}"
+    image: "ghcr.io/tecnativa/docker-socket-proxy:0.1.1"
     container_name: "dockerproxy"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${PROXY_AUTO_UPDATE}"
     environment:
       - "CONTAINERS=${CONTAINERS}"
       - "POST=${POST}"
@@ -15,10 +13,8 @@ services:
     restart: "unless-stopped"
 
   homepage:
-    image: "ghcr.io/gethomepage/homepage:${TAG}"
+    image: "ghcr.io/gethomepage/homepage:v0.8.8"
     container_name: "homepage"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
       - "PUID=${PUID}"
       - "PGID=${PGID}"
