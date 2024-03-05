@@ -1,11 +1,8 @@
 version: "3.8"
 services:
   forgejo_server:
-    image: "codeberg.org/forgejo/forgejo:${SERVER_TAG}"
+    image: "codeberg.org/forgejo/forgejo:1.21.5-0"
     container_name: "forgejo_server"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
-      - "com.centurylinklabs.watchtower.depends-on=forgejo_db"
     depends_on:
       - "forgejo_db"
     environment:
@@ -25,10 +22,8 @@ services:
     restart: "unless-stopped"
 
   forgejo_db:
-    image: "linuxserver/mariadb:${DB_TAG}"
+    image: "linuxserver/mariadb:10.11.6"
     container_name: "forgejo_db"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
       - "PUID=${PUID}"
       - "PGID=${PGID}"
