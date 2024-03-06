@@ -1,10 +1,8 @@
 version: "3.8"
 services:
   caddy-reverse-proxy:
-    image: "slothcroissant/caddy-cloudflaredns:${TAG}"
+    image: "slothcroissant/caddy-cloudflaredns:v2.7.6"
     container_name: "caddy-reverse-proxy"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     cap_add:
       - NET_ADMIN
     environment:
