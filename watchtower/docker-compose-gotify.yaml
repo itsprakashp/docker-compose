@@ -1,10 +1,8 @@
 version: "3.8"
 services:
   watchtower:
-    image: "containrrr/watchtower:${TAG}"
+    image: "containrrr/watchtower:1.7.1"
     container_name: "watchtower"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
       - TZ=${TZ}
       - WATCHTOWER_CLEANUP=${WATCHTOWER_CLEANUP}
