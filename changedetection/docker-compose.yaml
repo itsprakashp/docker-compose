@@ -1,11 +1,8 @@
 version: "3.8"
 services:
   changedetection:
-    image: "linuxserver/changedetection.io:${TAG}"
+    image: "linuxserver/changedetection.io:0.45.14"
     container_name: "changedetection"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
-      - "com.centurylinklabs.watchtower.depends-on=playwright-chrome"
     depends_on:
       - "playwright-chrome"
     environment:
@@ -20,10 +17,8 @@ services:
     restart: "unless-stopped"
     
   playwright-chrome:
-    image: "browserless/chrome:${CHROME_TAG}"
+    image: "browserless/chrome:latest"
     container_name: "playwright-chrome"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${CHROME_AUTO_UPDATE}"
     ports:
       - "3000:3000"
     restart: "unless-stopped"
