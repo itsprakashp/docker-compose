@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  wallos:
+    image: "bellamy/wallos:1.12.1"
+    container_name: "wallos"
+    environment:
+      - "TZ=${TZ}"
+    volumes:
+      - "${DB_PATH}:/var/www/html/db"
+      - "${LOGOS_PATH}:/var/www/html/images/uploads/logos"
+    ports:
+      - "${PORT}:80/tcp"
+    restart: "unless-stopped"
