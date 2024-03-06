@@ -11,6 +11,7 @@
     "qbittorrent/*",
     "radicale/*",
     "firefox-syncserver/*",
-    "mailrise/*"
+    "mailrise/*",
+    "cloudflare-ddns/*"
   ]
 }
