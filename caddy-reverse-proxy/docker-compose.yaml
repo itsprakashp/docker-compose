@@ -7,11 +7,10 @@ services:
       - NET_ADMIN
     volumes:
       - "${CADDYFILE_PATH}:/etc/caddy/Caddyfile"
-      - "${SITE_PATH}:/etc/caddy/sites"
       - "${CONF_PATH}:/config"
       - "${DATA_PATH}:/data"
       - "${LOG_PATH}:/var/log/caddy"
-      - "${DEFAULT_SITE_PATH}:/srv"
+      - "${SITE_PATH}:/srv"
     ports:
       - "${HTTP}:80"
       - "${HTTPS}:443"
