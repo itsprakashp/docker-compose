@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   forgejo_server:
-    image: "codeberg.org/forgejo/forgejo:1.21.6-0"
+    image: "codeberg.org/forgejo/forgejo:1.21.7-0"
     container_name: "forgejo_server"
     depends_on:
       - "forgejo_db"
