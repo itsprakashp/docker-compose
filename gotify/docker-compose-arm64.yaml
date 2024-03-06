@@ -1,16 +1,16 @@
 version: "3.8"
 services:
   gotify:
-    image: gotify/server-arm64:2.4.0
-    container_name: gotify
+    image: "gotify/server-arm64:2.4.0"
+    container_name: "gotify"
     environment:
-      - TZ=${TZ}
-      - GOTIFY_SERVER_SSL_ENABLED=${GOTIFY_SERVER_SSL_ENABLED} 
-      - GOTIFY_DEFAULTUSER_NAME=${GOTIFY_DEFAULTUSER_NAME}
-      - GOTIFY_DEFAULTUSER_PASS=${GOTIFY_DEFAULTUSER_PASS}
-      - GOTIFY_REGISTRATION=${GOTIFY_REGISTRATION}
+      - "TZ=${TZ}"
+      - "GOTIFY_SERVER_SSL_ENABLED=${GOTIFY_SERVER_SSL_ENABLED}"
+      - "GOTIFY_DEFAULTUSER_NAME=${GOTIFY_DEFAULTUSER_NAME}"
+      - "GOTIFY_DEFAULTUSER_PASS=${GOTIFY_DEFAULTUSER_PASS}"
+      - "GOTIFY_REGISTRATION=${GOTIFY_REGISTRATION}"
     volumes:
-      - ${PATH}:/app/data
+      - "${PATH}:/app/data"
     ports:
-      - ${PORT}:80
-    restart: unless-stopped
+      - "${PORT}:80"
+    restart: "unless-stopped"
