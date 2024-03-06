@@ -8,6 +8,8 @@
     "glances/*",
     "portainer/*",
     "portainer-agent/*",
-    "qbittorrent/*"
+    "qbittorrent/*",
+    "radicale/*",
+    "firefox-syncserver/*"
   ]
 }
