@@ -3,7 +3,6 @@
   "extends": [
     "config:recommended"
   ],
-
   "ignorePaths": [
     "authelia/*",
     "cloudflare-ddns/*",
@@ -15,5 +14,9 @@
     "qbittorrent/*",
     "radicale/*",
     "watchtower/*"
+  ],
+  "schedule": [
+    "before 8am on Saturday",
+    "before 8am on Sunday"
   ]
 }
