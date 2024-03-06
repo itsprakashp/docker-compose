@@ -5,8 +5,9 @@
   ],
 
   "ignorePaths": [
-    "qbittorrent/docker-compose.yaml",
-    "portainer/docker-compose.yaml",
-    "portainer-agent/docker-compose.yaml"
+    "glances/*",
+    "portainer/*",
+    "portainer-agent/*",
+    "qbittorrent/*"
   ]
 }
