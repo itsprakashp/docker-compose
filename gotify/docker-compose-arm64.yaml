@@ -10,7 +10,7 @@ services:
       - "GOTIFY_DEFAULTUSER_PASS=${GOTIFY_DEFAULTUSER_PASS}"
       - "GOTIFY_REGISTRATION=${GOTIFY_REGISTRATION}"
     volumes:
-      - "${PATH}:/app/data"
+      - "${CONFIG_PATH}:/app/data"
     ports:
       - "${PORT}:80"
     restart: "unless-stopped"
