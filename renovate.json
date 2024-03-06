@@ -5,13 +5,14 @@
   ],
 
   "ignorePaths": [
-    "glances/*",
-    "portainer/*",
-    "portainer-agent/*",
-    "qbittorrent/*",
-    "radicale/*",
+    "authelia/*",
+    "cloudflare-ddns/*",
     "firefox-syncserver/*",
+    "glances/*",
     "mailrise/*",
-    "cloudflare-ddns/*"
+    "portainer-agent/*",
+    "portainer/*",
+    "qbittorrent/*",
+    "radicale/*"
   ]
 }
