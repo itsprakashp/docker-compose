@@ -1,15 +1,15 @@
 version: "3.8"
 services:
   glances:
-    image: "nicolargo/glances:${TAG}"
+    image: "nicolargo/glances:latest"
     container_name: "glances"
+    hostname: "Rayquaza"
     pid: "host"
-    labels:
-      - "com.centurylinklabs.watchtower.enable=${AUTO_UPDATE}"
     environment:
       - "GLANCES_OPT=-w"
     ports:
-      - "61208:61208"
+      - "${PORT}:61208"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "/:/mnt/root"
     restart: "unless-stopped"
