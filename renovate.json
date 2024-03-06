@@ -10,6 +10,7 @@
     "portainer-agent/*",
     "qbittorrent/*",
     "radicale/*",
-    "firefox-syncserver/*"
+    "firefox-syncserver/*",
+    "mailrise/*"
   ]
 }
