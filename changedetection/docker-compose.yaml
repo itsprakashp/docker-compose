@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   changedetection:
-    image: "linuxserver/changedetection.io:0.45.14"
+    image: "linuxserver/changedetection.io:version-0.45.14"
     container_name: "changedetection"
     depends_on:
       - "playwright-chrome"
