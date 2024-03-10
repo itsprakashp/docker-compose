@@ -6,7 +6,7 @@ services:
     user: "${UID}:${GID}"
     environment:
       - "TZ=${TZ}"
-      - "JAVA_TOOL_OPTIONS=${RAM_LIMIT}""
+      - "JAVA_TOOL_OPTIONS=-Xmx${RAM_LIMIT}"
     volumes:
       - "${CONFIG_PATH}:/config"
       - "${DATA_PATH}:/data"
