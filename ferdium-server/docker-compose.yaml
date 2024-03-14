@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  ferdium-server:
+    image: "ferdium/ferdium-server:2.0.6"
+    container_name: "ferdium-server"
+    environment:
+      - "NODE_ENV=${NODE_ENV}"
+      - "APP_URL=${APP_URL}"
+      - "DB_CONNECTION=${DB_CONNECTION}"
+      - "MAIL_CONNECTION=smtp"
+      - "SMTP_HOST=${SMTP_HOST}"
+      - "SMTP_PORT=${SMTP_PORT}"
+      - "MAIL_SSL=${MAIL_SSL}"
+      - "MAIL_USERNAME=${MAIL_USERNAME}"
+      - "MAIL_PASSWORD=${MAIL_PASSWORD}"
+      - "MAIL_SENDER=${MAIL_SENDER}"
+      - "IS_CREATION_ENABLED=${IS_CREATION_ENABLED}"
+      - "IS_DASHBOARD_ENABLED=${IS_DASHBOARD_ENABLED}"
+      - "IS_REGISTRATION_ENABLED=${IS_REGISTRATION_ENABLED}"
+      - "CONNECT_WITH_FRANZ=${CONNECT_WITH_FRANZ}"
+      - "DATA_DIR=${DATA_DIR}"
+      - "JWT_USE_PEM=${JWT_USE_PEM}"
+    volumes:
+      - "${DB_PATH}:/data"
+      - "${RECIPES_PATH}:/app/build/recipes"
+    ports:
+      - "${PORT}:3333"
+    restart: "unless-stopped"
