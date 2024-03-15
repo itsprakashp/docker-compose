@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  adguardhome:
+    image: "adguard/adguardhome:v0.107.45"
+    container_name: "adguardhome"
+    volumes:
+      - "${WORK_PATH}:/opt/adguardhome/work"
+      - "${CONF_PATH}:/opt/adguardhome/conf"
+    ports:
+      - "${DNS_PORT}:53/tcp"
+      - "${DNS_PORT}:53/udp"
+      - "${TLS_PORT}:853/tcp"
+      - "${ADMIN_PORT}:3000/tcp"
+    restart: "unless-stopped"
+  adguardhome-sync:
+    image: "linuxserver/adguardhome-sync:0.6.6"
+    container_name: "adguardhome-sync"
+    environment:
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
+      - "TZ=${TZ}"
+    volumes:
+      - "${SYNC_PATH}:/config"
+    ports:
+      - "${SYNC_PORT}:8080"
+    restart: "unless-stopped"
