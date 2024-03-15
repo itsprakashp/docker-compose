@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  healthchecks:
+    image: "linuxserver/healthchecks:3.2.20240311"
+    container_name: "healthchecks"
+    environment:
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
+      - "TZ=${TZ}"
+      - "SITE_ROOT=${SITE_ROOT}"
+      - "SITE_NAME=${SITE_NAME}"
+      - "DEFAULT_FROM_EMAIL=${DEFAULT_FROM_EMAIL}"
+      - "EMAIL_HOST=${EMAIL_HOST}"
+      - "EMAIL_PORT=${EMAIL_PORT}"
+      - "EMAIL_HOST_USER=${EMAIL_HOST_USER}"
+      - "EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}"
+      - "EMAIL_USE_TLS=${EMAIL_USE_TLS}"
+      - "EMAIL_USE_SSL=${EMAIL_USE_SSL}"
+      - "SUPERUSER_EMAIL=${SUPERUSER_EMAIL}"
+      - "SUPERUSER_PASSWORD=${SUPERUSER_PASSWORD}"
+      - "REGENERATE_SETTINGS=${REGENERATE_SETTINGS}"
+      - "SECRET_KEY=${SECRET_KEY}"
+      - "APPRISE_ENABLED=${APPRISE_ENABLED}"
+      - "REGISTRATION_OPEN=${REGISTRATION_OPEN}"
+      - "DEBUG=${DEBUG}"
+      - "SITE_LOGO_URL=${SITE_LOGO_URL}"
+    volumes:
+      - ${CONFIG_PATH}:/config
+    ports:
+      - "${PORT}:8000"
+    restart: "unless-stopped"
