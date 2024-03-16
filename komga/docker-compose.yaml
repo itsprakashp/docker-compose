@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   komga:
-    image: "gotson/komga:1.10.3"
+    image: "gotson/komga:1.10.4"
     container_name: "komga"
     user: "${UID}:${GID}"
     environment:
