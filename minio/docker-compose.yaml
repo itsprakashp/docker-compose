@@ -6,6 +6,8 @@ services:
     environment:
       - "MINIO_ROOT_USER=${MINIO_ROOT_USER}"
       - "MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}"
+      - "MINIO_BROWSER_REDIRECT_URL=${MINIO_BROWSER_REDIRECT_URL}"
+      - "MINIO_SERVER_URL=${MINIO_SERVER_URL}"
     command: server --console-address ":9001" /data
     volumes:
       - "${DATA_PATH}:/data"
