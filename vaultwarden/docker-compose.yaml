@@ -18,8 +18,7 @@ services:
 #      - "SMTP_PASSWORD=${SMTP_PASSWORD}"
       - "LOG_FILE=/data/vaultwarden.log"
     volumes:
-      - "${DATA_PATH}:/data/"
+      - "${PATH}:/data/"
     ports:
-      - "${PORT1}:80"
-      - "${PORT2}:3012"
+      - "${PORT}:80"
     restart: "unless-stopped"
