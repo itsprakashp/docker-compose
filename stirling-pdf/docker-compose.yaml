@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   stirling-pdf:
-    image: "frooodle/s-pdf:0.22.4"
+    image: "frooodle/s-pdf:0.22.6"
     container_name: "stirling-pdf"
     environment:
       - "DOCKER_ENABLE_SECURITY=${DOCKER_ENABLE_SECURITY}"
