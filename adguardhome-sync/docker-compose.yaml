@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   adguardhome-sync:
-    image: "linuxserver/adguardhome-sync:0.6.6"
+    image: "linuxserver/adguardhome-sync:0.6.7"
     container_name: "adguardhome-sync"
     environment:
       - "PUID=${PUID}"
