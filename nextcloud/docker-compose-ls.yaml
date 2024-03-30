@@ -1,0 +1,46 @@
+version: "3.8"
+services:
+  nextcloud_app:
+    image: "linuxserver/nextcloud:28.0.4"
+    container_name: "nextcloud_app"
+    depends_on:
+      - "nextcloud_db"
+      - "nextcloud_redis"
+    environment:
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
+      - "TZ=${TZ}"
+    volumes:
+      - "${CONFIG_PATH}:/config"
+      - "${DATA_PATH}:/data"
+      - "${HDD_DATA_PATH}:/hdd"
+    ports:
+      - "${APP_PORT}:443"
+    restart: "unless-stopped"
+
+  nextcloud_db:
+    image: "linuxserver/mariadb:10.11.6"
+    container_name: "nextcloud_db"
+    environment:
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
+      - "TZ=${TZ}"
+      - "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
+      - "MYSQL_DATABASE=${MYSQL_DATABASE}"
+      - "MYSQL_USER=${MYSQL_USER}"
+      - "MYSQL_PASSWORD=${MYSQL_PASSWORD}"
+    volumes:
+      - "${DB_PATH}:/config"
+    ports:
+      - "${DB_PORT}:3306"
+    restart: "unless-stopped"
+    
+  nextcloud_redis:
+    image: "redis:7.2.4"
+    container_name: "nextcloud_redis"
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - "${REDIS_PATH}:/data"
+    ports:
+      - "${REDIS_PORT}:6379"
+    restart: "unless-stopped"
