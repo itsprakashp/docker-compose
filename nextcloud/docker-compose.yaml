@@ -1,8 +1,8 @@
 version: "3.8"
 services:
-  nextcloud:
+  nextcloud_app:
     image: "nextcloud:28.0.4"
-    container_name: "nextcloud"
+    container_name: "nextcloud_app"
     depends_on:
       - "nextcloud_db"
       - "nextcloud_redis"
@@ -22,6 +22,17 @@ services:
       - "${DATA_PATH}:/var/www/html/data"
     ports:
       - "${APP_PORT}:80"
+    restart: "unless-stopped"
+
+  nextcloud_cron:
+    image: "nextcloud:28.0.4"
+    container_name: "nextcloud_cron"
+    depends_on:
+      - "nextcloud_app"
+    entrypoint: /cron.sh
+    volumes:
+      - "${CONFIG_PATH}:/var/www/html"
+      - "${DATA_PATH}:/var/www/html/data"
     restart: "unless-stopped"
 
   nextcloud_db:
