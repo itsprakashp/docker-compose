@@ -1,8 +1,8 @@
 version: "3.8"
 services:
-  nextcloud_app:
+  nextcloud:
     image: "nextcloud:28.0.4"
-    container_name: "nextcloud_app"
+    container_name: "nextcloud"
     depends_on:
       - "nextcloud_db"
       - "nextcloud_redis"
@@ -28,7 +28,7 @@ services:
     image: "nextcloud:28.0.4"
     container_name: "nextcloud_cron"
     depends_on:
-      - "nextcloud_app"
+      - "nextcloud"
     entrypoint: /cron.sh
     volumes:
       - "${CONFIG_PATH}:/var/www/html"
