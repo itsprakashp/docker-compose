@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  airsonic-advanced:
+    image: "linuxserver/airsonic-advanced:11.0.0-SNAPSHOT.20230217142243-ls99"
+    container_name: "airsonic-advanced"
+    environment:
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
+      - "TZ=${TZ}"
+      - "CONTEXT_PATH=${CONTEXT_PATH}"
+      - "JAVA_OPTS=${JAVA_OPTS}"
+    volumes:
+      - "${CONFIG_PATH}:/config"
+      - "${PLAYLISTS_PATH}:/playlists"
+      - "${AUDIOBOOKS_PATH}:/audiobooks"
+      - "${PODCASTS_PATH}:/podcasts"
+      - "${MUSIC_PATH}:/music"
+    ports:
+      - "${PORT}:4040"
+    restart: "unless-stopped"
