@@ -1,8 +1,8 @@
 version: "3.8"
 services:
-  nextcloud:
+  nextcloud_app:
     image: "nextcloud:28.0.4"
-    container_name: "nextcloud"
+    container_name: "nextcloud_app"
     depends_on:
       - "nextcloud_db"
       - "nextcloud_redis"
@@ -28,8 +28,19 @@ services:
     image: "nextcloud:28.0.4"
     container_name: "nextcloud_cron"
     depends_on:
-      - "nextcloud"
+      - "nextcloud_app"
     entrypoint: /cron.sh
+    environment:
+      - "POSTGRES_HOST=nextcloud_db:5432"
+      - "POSTGRES_DB=${POSTGRES_DB}"
+      - "POSTGRES_USER=${POSTGRES_USER}"
+      - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
+      - "REDIS_HOST=nextcloud_redis"
+      - "REDIS_HOST_PORT=6379"
+      - "REDIS_HOST_PASSWORD=${REDIS_PASSWORD}"
+      - "PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT}"
+      - "PHP_UPLOAD_LIMIT=${PHP_UPLOAD_LIMIT}"
+      - "APACHE_DISABLE_REWRITE_IP=${APACHE_DISABLE_REWRITE_IP}"
     volumes:
       - "${CONFIG_PATH}:/var/www/html"
       - "${DATA_PATH}:/var/www/html/data"
