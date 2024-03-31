@@ -10,7 +10,7 @@ services:
       - ${HDD_PATH}:/usr/src/app/external-hdd:ro
       - /etc/localtime:/etc/localtime:ro
     env_file:
-      - stack.env
+      - ../stack.env
     ports:
       - ${SERVER_PORT}:3001
     depends_on:
@@ -28,7 +28,7 @@ services:
       - ${HDD_PATH}:/usr/src/app/external-hdd:ro
       - /etc/localtime:/etc/localtime:ro
     env_file:
-      - stack.env
+      - ../stack.env
     depends_on:
       - immich-redis
       - immich-postgres
@@ -40,7 +40,7 @@ services:
     volumes:
       - ${CACHE_PATH}:/cache
     env_file:
-      - stack.env
+      - ../stack.env
     restart: unless-stopped
 
   immich-redis:
