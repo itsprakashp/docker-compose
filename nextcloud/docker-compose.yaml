@@ -20,6 +20,7 @@ services:
     volumes:
       - "${CONFIG_PATH}:/var/www/html"
       - "${DATA_PATH}:/var/www/html/data"
+      - "${HDD_PATH}:/hdd"
     ports:
       - "${APP_PORT}:80"
     restart: "unless-stopped"
@@ -44,6 +45,7 @@ services:
     volumes:
       - "${CONFIG_PATH}:/var/www/html"
       - "${DATA_PATH}:/var/www/html/data"
+      - "${HDD_PATH}:/hdd"
     restart: "unless-stopped"
 
   nextcloud_db:
