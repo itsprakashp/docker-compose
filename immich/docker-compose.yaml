@@ -1,0 +1,60 @@
+version: "3.8"
+services:
+  immich-server:
+    container_name: immich_server
+    image: ghcr.io/immich-app/immich-server:v1.100.0
+    command: ['start.sh', 'immich']
+    volumes:
+      - ${UPLOAD_LOCATION}:/usr/src/app/upload
+      - ${EXTERNAL_PATH}:/usr/src/app/external:ro
+      - ${HDD_PATH}:/usr/src/app/external-hdd:ro
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - stack.env
+    ports:
+      - 2283:3001
+    depends_on:
+      - immich-redis
+      - immich-database
+    restart: unless-stopped
+
+  immich-microservices:
+    container_name: immich_microservices
+    image: ghcr.io/immich-app/immich-server:v1.100.0
+    command: ['start.sh', 'microservices']
+    volumes:
+      - ${UPLOAD_LOCATION}:/usr/src/app/upload
+      - ${EXTERNAL_PATH}:/usr/src/app/external:ro
+      - ${HDD_PATH}:/usr/src/app/external-hdd:ro
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - stack.env
+    depends_on:
+      - immich-redis
+      - immich-database
+    restart: unless-stopped
+
+  immich-machine-learning:
+    container_name: immich_machine_learning
+    image: ghcr.io/immich-app/immich-machine-learning:v1.100.0
+    volumes:
+      - ${CACHE_PATH}:/cache
+    env_file:
+      - stack.env
+    restart: unless-stopped
+
+  immich-redis:
+    container_name: immich_redis
+    image: 	redis:7.2.4
+    restart: unless-stopped
+
+  immich-postgres:
+    container_name: immich_postgres
+    image: tensorchord/pgvecto-rs:pg15-v0.2.1
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_DB: ${DB_DATABASE_NAME}
+    volumes:
+      - ${DB_PATH}:/var/lib/postgresql/data
+    restart: unless-stopped
