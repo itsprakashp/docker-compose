@@ -15,7 +15,7 @@ services:
       - ${SERVER_PORT}:3001
     depends_on:
       - immich-redis
-      - immich-database
+      - immich-postgres
     restart: unless-stopped
 
   immich-microservices:
@@ -31,7 +31,7 @@ services:
       - stack.env
     depends_on:
       - immich-redis
-      - immich-database
+      - immich-postgres
     restart: unless-stopped
 
   immich-machine-learning:
