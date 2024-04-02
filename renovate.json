@@ -9,6 +9,7 @@
     "firefox-syncserver/*",
     "glances/*",
     "mailrise/*",
+    "minio/*",
     "portainer-agent/*",
     "portainer/*",
     "qbittorrent/*",
