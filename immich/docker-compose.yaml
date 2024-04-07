@@ -6,8 +6,10 @@ services:
     command: ['start.sh', 'immich']
     volumes:
       - ${UPLOAD_LOCATION}:/usr/src/app/upload
-      - ${EXTERNAL_PATH}:/usr/src/app/external:ro
-      - ${HDD_PATH}:/usr/src/app/external-hdd:ro
+      - ${PHOTOS_PATH_1}:/usr/src/app/external/${USER_1}/photos
+      - ${VIDEOS_PATH_1}:/usr/src/app/external/${USER_1}/videos
+      - ${PHOTOS_PATH_2}:/usr/src/app/external/${USER_2}/photos
+      - ${VIDEOS_PATH_2}:/usr/src/app/external/${USER_2}/videos
       - /etc/localtime:/etc/localtime:ro
     env_file:
       - ../stack.env
@@ -24,8 +26,10 @@ services:
     command: ['start.sh', 'microservices']
     volumes:
       - ${UPLOAD_LOCATION}:/usr/src/app/upload
-      - ${EXTERNAL_PATH}:/usr/src/app/external:ro
-      - ${HDD_PATH}:/usr/src/app/external-hdd:ro
+      - ${PHOTOS_PATH_1}:/usr/src/app/external/${USER_1}/photos
+      - ${VIDEOS_PATH_1}:/usr/src/app/external/${USER_1}/videos
+      - ${PHOTOS_PATH_2}:/usr/src/app/external/${USER_2}/photos
+      - ${VIDEOS_PATH_2}:/usr/src/app/external/${USER_2}/videos
       - /etc/localtime:/etc/localtime:ro
     env_file:
       - ../stack.env
