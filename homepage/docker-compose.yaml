@@ -5,6 +5,8 @@ services:
     container_name: "dockerproxy"
     environment:
       - "CONTAINERS=${CONTAINERS}"
+      - "SERVICES=${SERVICES}"
+      - "TASKS=${TASKS}"
       - "POST=${POST}"
     ports:
       - "${PROXY_PORT}:2375"
