@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   nginx-reverse-proxy:
-    image: "nginx:1.25.4"
+    image: "nginx:1.25.5"
     container_name: "nginx-reverse-proxy"
     volumes:
       - "${CONF_PATH}:/etc/nginx/nginx.conf"
