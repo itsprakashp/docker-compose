@@ -3,6 +3,7 @@
   "extends": [
     "config:recommended"
   ],
+  "timezone": "Asia/Kolkata",
   "prHourlyLimit": 0,
   "ignorePaths": [
     "mailrise/*",
