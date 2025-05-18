@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   nginx-proxy-manager:
-    image: "jc21/nginx-proxy-manager:2.11.1"
+    image: "jc21/nginx-proxy-manager:2.12.3"
     container_name: "nginx-proxy-manager"
     volumes:
       - "${DATA_PATH}:/data"
