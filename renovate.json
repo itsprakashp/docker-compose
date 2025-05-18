@@ -10,9 +10,6 @@
     "minio/*",
     "portainer-agent/*",
     "portainer/*",
-    "qbittorrent/*",
-    "radicale/*",
-    "watchtower/*"
   ],
   "schedule": [
     "before 8am on Saturday",
