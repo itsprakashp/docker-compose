@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   ferdium-server:
-    image: "ferdium/ferdium-server:2.0.6"
+    image: "ferdium/ferdium-server:2.0.10"
     container_name: "ferdium-server"
     environment:
       - "NODE_ENV=${NODE_ENV}"
