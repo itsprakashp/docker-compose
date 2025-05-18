@@ -5,7 +5,6 @@
   ],
   "prHourlyLimit": 0,
   "ignorePaths": [
-    "authelia/*",
     "cloudflare-ddns/*",
     "firefox-syncserver/*",
     "glances/*",
