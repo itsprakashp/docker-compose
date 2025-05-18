@@ -1,0 +1,18 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:recommended'
+  ],
+  timezone: 'Asia/Kolkata',
+  prHourlyLimit: 0,
+  ignorePaths: [
+    'mailrise/*',
+    'minio/*',
+    'portainer-agent/*',
+    'portainer/*',
+  ],
+  schedule: [
+    'before 8am on Saturday',
+    'before 8am on Sunday'
+  ]
+}
