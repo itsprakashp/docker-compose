@@ -3,7 +3,6 @@
   "extends": [
     "config:recommended"
   ],
-  "timezone": "Asia/Kolkata",
   "prHourlyLimit": 0,
   "ignorePaths": [
     "mailrise/*",
@@ -11,6 +10,7 @@
     "portainer-agent/*",
     "portainer/*",
   ],
+  "timezone": "Asia/Kolkata",
   "schedule": [
     "before 8am on Saturday",
     "before 8am on Sunday"
