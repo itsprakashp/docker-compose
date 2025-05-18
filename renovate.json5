@@ -3,16 +3,17 @@
   extends: [
     'config:recommended'
   ],
-  timezone: 'Asia/Kolkata',
   prHourlyLimit: 0,
+  timezone: 'Asia/Kolkata',
+  schedule: [
+    'before 8am on Saturday',
+    'before 8am on Sunday'
+  ]
   ignorePaths: [
     'mailrise/*',
     'minio/*',
     'portainer-agent/*',
     'portainer/*',
+    'qbittorrent/*',
   ],
-  schedule: [
-    'before 8am on Saturday',
-    'before 8am on Sunday'
-  ]
 }
