@@ -20,7 +20,7 @@ services:
     restart: "unless-stopped"
 
   picsur_db:
-    image: "postgres:16.2"
+    image: "postgres:17.5"
     container_name: "picsur_db"
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
