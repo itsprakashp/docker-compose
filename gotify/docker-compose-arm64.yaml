@@ -5,9 +5,6 @@ services:
     container_name: "gotify"
     environment:
       - "TZ=${TZ}"
-      - "GOTIFY_SERVER_SSL_ENABLED=${GOTIFY_SERVER_SSL_ENABLED}"
-      - "GOTIFY_DEFAULTUSER_NAME=${GOTIFY_DEFAULTUSER_NAME}"
-      - "GOTIFY_DEFAULTUSER_PASS=${GOTIFY_DEFAULTUSER_PASS}"
       - "GOTIFY_REGISTRATION=${GOTIFY_REGISTRATION}"
     volumes:
       - "${CONFIG_PATH}:/app/data"
