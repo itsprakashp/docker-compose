@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   forgejo_db:
-    image: linuxserver/mariadb:10.11.6
+    image: linuxserver/mariadb:10.11.10
     container_name: forgejo_db
     environment:
       - PUID=${PUID}
