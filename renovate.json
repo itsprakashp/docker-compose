@@ -6,7 +6,6 @@
   "prHourlyLimit": 0,
   "ignorePaths": [
     "mailrise/*",
-    "minio/*",
     "portainer-agent/*",
     "portainer/*",
     "qbittorrent/*",
