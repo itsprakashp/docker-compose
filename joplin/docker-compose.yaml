@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   joplin-server:
-    image: "joplin/server:2.14.2-beta"
+    image: "joplin/server:3.3.9-beta"
     container_name: "joplin-server"
     depends_on:
       - "joplin-db"
