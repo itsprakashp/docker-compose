@@ -1,7 +1,7 @@
 version: "3.8"  
 services:
   authelia:
-    image: "authelia/authelia:4.39.2"
+    image: "authelia/authelia:4.39.3"
     container_name: "authelia"
     environment:
       - "TZ=${TZ}"
