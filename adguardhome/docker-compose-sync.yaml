@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   adguardhome:
-    image: "adguard/adguardhome:v0.107.48"
+    image: "adguard/adguardhome:v0.107.61"
     container_name: "adguardhome"
     volumes:
       - "${WORK_PATH}:/opt/adguardhome/work"
