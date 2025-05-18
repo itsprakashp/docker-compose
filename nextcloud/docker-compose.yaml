@@ -49,7 +49,7 @@ services:
     restart: "unless-stopped"
 
   nextcloud_db:
-    image: "mariadb:11.3.2"
+    image: "mariadb:11.7.2"
     container_name: "nextcloud_db"
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW --innodb-file-per-table=1 --skip-innodb-read-only-compressed
     environment:
