@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   picsur_app:
-    image: "ghcr.io/caramelfur/picsur:0.5.3"
+    image: "ghcr.io/caramelfur/picsur:0.5.6"
     container_name: "picsur_app"
     depends_on:
       - "picsur_db"
