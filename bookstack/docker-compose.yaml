@@ -1,7 +1,7 @@
 version: "3.8"
 services: 
   bookstack_app:
-    image: "linuxserver/bookstack:24.12.20241223"
+    image: "linuxserver/bookstack:25.02.20250309"
     container_name: "bookstack_app"
     depends_on:
       - "bookstack_db"
