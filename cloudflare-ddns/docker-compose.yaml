@@ -15,6 +15,6 @@ services:
       - PROXIED=${PROXIED}
       - IP6_PROVIDER=${IP6_PROVIDER}
       - UPDATE_CRON=${UPDATE_CRON}
-      - UPTIMEKUMA=${UPTIMEKUMA}
+      - HEALTHCHECKS=${HEALTHCHECKS}
       - TTL=${TTL}
     restart: unless-stopped
