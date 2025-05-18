@@ -22,6 +22,7 @@ services:
       - "APPRISE_ENABLED=${APPRISE_ENABLED}"
       - "REGISTRATION_OPEN=${REGISTRATION_OPEN}"
       - "DEBUG=${DEBUG}"
+      - "SITE_LOGO_URL=${SITE_LOGO_URL}"
     volumes:
       - ${CONFIG_PATH}:/config
     ports:
