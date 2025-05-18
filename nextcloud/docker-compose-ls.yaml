@@ -19,7 +19,7 @@ services:
     restart: "unless-stopped"
 
   nextcloud_db:
-    image: "linuxserver/mariadb:10.11.6"
+    image: "linuxserver/mariadb:10.11.10"
     container_name: "nextcloud_db"
     environment:
       - "PUID=${PUID}"
