@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   nextcloud_app:
-    image: "linuxserver/nextcloud:28.0.4"
+    image: "linuxserver/nextcloud:31.0.5"
     container_name: "nextcloud_app"
     depends_on:
       - "nextcloud_db"
