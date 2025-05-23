@@ -13,7 +13,7 @@ services:
       - "${ADMIN_PORT}:3000/tcp"
     restart: "unless-stopped"
   adguardhome-sync:
-    image: "linuxserver/adguardhome-sync:0.7.5"
+    image: "linuxserver/adguardhome-sync:0.7.6"
     container_name: "adguardhome-sync"
     environment:
       - "PUID=${PUID}"
