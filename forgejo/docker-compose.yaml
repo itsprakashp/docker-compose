@@ -1,39 +1,39 @@
 version: "3.8"
 services:
   forgejo_db:
-    image: linuxserver/mariadb:11.4.5
-    container_name: forgejo_db
+    image: "linuxserver/mariadb:11.4.5"
+    container_name: "forgejo_db"
     environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
+      - "TZ=${TZ}"
+      - "MYSQL_DATABASE=${MYSQL_DATABASE}"
+      - "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
+      - "MYSQL_USER=${MYSQL_USER}"
+      - "MYSQL_PASSWORD=${MYSQL_PASSWORD}"
     volumes:
-      - ${DB_PATH}:/config
+      - "${DB_PATH}:/config"
     ports:
-      - ${DB_PORT}:3306
-    restart: unless-stopped
+      - "${DB_PORT}:3306"
+    restart: "unless-stopped"
 
   forgejo_server:
-    image: codeberg.org/forgejo/forgejo:1.21.11-0
-    container_name: forgejo_server
+    image: "codeberg.org/forgejo/forgejo:11.0.1"
+    container_name: "forgejo_server"
     depends_on:
-      - forgejo_db
+      - "forgejo_db"
     environment:
-      - USER_UID=${PUID}
-      - USER_GID=${PGID}
-      - GITEA__database__DB_TYPE=mysql
-      - GITEA__database__HOST=forgejo_db
-      - GITEA__database__NAME=${MYSQL_DATABASE}
-      - GITEA__database__USER=${MYSQL_USER}
-      - GITEA__database__PASSWD=${MYSQL_PASSWORD}
+      - "USER_UID=${PUID}"
+      - "USER_GID=${PGID}"
+      - "FORGEJO__database__DB_TYPE=mysql"
+      - "FORGEJO__database__HOST=forgejo_db"
+      - "FORGEJO__database__NAME=${MYSQL_DATABASE}"
+      - "FORGEJO__database__USER=${MYSQL_USER}"
+      - "FORGEJO__database__PASSWD=${MYSQL_PASSWORD}"
     volumes:
-      - ${SERVER_PATH}:/data
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
+      - "${SERVER_PATH}:/data"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
     ports:
-      - ${SERVER_PORT}:3000
-    restart: unless-stopped
+      - "${SERVER_PORT}:3000"
+    restart: "unless-stopped"
