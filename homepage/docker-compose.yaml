@@ -4,10 +4,10 @@ services:
     image: "ghcr.io/tecnativa/docker-socket-proxy:0.3.0"
     container_name: "dockerproxy"
     environment:
-      - "CONTAINERS=${CONTAINERS}"
-      - "SERVICES=${SERVICES}"
-      - "TASKS=${TASKS}"
-      - "POST=${POST}"
+      - "CONTAINERS=${CONTAINERS}" # Allow access to viewing containers
+      - "SERVICES=${SERVICES}" # Allow access to viewing services (necessary when using Docker Swarm)
+      - "TASKS=${TASKS}" # Allow access to viewing tasks (necessary when using Docker Swarm)
+      - "POST=${POST}" # Disallow any POST operations (effectively read-only)
     ports:
       - "${PROXY_PORT}:2375"
     volumes:
@@ -18,6 +18,7 @@ services:
     image: "ghcr.io/gethomepage/homepage:v1.2.0"
     container_name: "homepage"
     environment:
+      - "HOMEPAGE_ALLOWED_HOSTS=${HOMEPAGE_ALLOWED_HOSTS}"
       - "PUID=${PUID}"
       - "PGID=${PGID}"
     volumes:
