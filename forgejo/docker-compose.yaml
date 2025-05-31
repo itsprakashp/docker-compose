@@ -36,5 +36,4 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
     ports:
       - "${SERVER_PORT}:3000"
-      - "${SSH_PORT}:2222"
     restart: "unless-stopped"
