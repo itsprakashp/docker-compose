@@ -1,11 +1,13 @@
 version: "3.8"
 services:
   homeassistant:
-    image: "homeassistant/home-assistant:2025.5.3"
+    image: "linuxserver/homeassistant:2025.5.3"
     container_name: "homeassistant"
+    environment:
+      - "PUID=${PUID}"
+      - "PGID=${PGID}"
+      - "TZ=${TZ}"
     network_mode: "host"
     volumes:
       - "${CONFIG_PATH}:/config"
-      - "/etc/localtime:/etc/localtime:ro"
-      - "/run/dbus:/run/dbus:ro"
     restart: "unless-stopped"
